@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_034254) do
+ActiveRecord::Schema.define(version: 2021_10_26_052720) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,4 +37,14 @@ ActiveRecord::Schema.define(version: 2021_10_26_034254) do
     t.index ["reset_password_token"], name: "index_recommenders_on_reset_password_token", unique: true
   end
 
+  create_table "recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "message"
+    t.bigint "recommender_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recommender_id"], name: "index_recommends_on_recommender_id"
+  end
+
+  add_foreign_key "recommends", "recommenders"
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_052720) do
+ActiveRecord::Schema.define(version: 2021_10_27_071058) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 2021_10_26_052720) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "musics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recommend_music_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "recommend_id"
+    t.bigint "music_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["music_id"], name: "index_recommend_music_relations_on_music_id"
+    t.index ["recommend_id"], name: "index_recommend_music_relations_on_recommend_id"
   end
 
   create_table "recommenders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,5 +61,7 @@ ActiveRecord::Schema.define(version: 2021_10_26_052720) do
     t.index ["recommender_id"], name: "index_recommends_on_recommender_id"
   end
 
+  add_foreign_key "recommend_music_relations", "musics"
+  add_foreign_key "recommend_music_relations", "recommends"
   add_foreign_key "recommends", "recommenders"
 end

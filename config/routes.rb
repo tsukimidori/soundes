@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
   root 'recommends#index'
-  resources :recommends, only: [:index] do
+  resources :recommends, only: [:index, :new, :create] do
     collection do
       get 'search'
     end

@@ -1,12 +1,14 @@
 class RecommendsController < ApplicationController
   require 'itunes-search-api'
   def index
+  end
+  def search
     @searchs = ITunesSearchAPI.search(
       :term => params[:term],
       :country => 'jp',
       :media => 'music',
       :lang => 'ja_jp',
-      :limit => '4'
+      :limit => '5'
       ).each do |item|
           p item
         end

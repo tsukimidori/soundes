@@ -4,3 +4,9 @@
     <br><br>
   </div>
 </div>
+<div class="container">
+  <div class="row col s4">
+    <%= "#{@recommender.nickname}さんがログイン中" if recommender_signed_in? %>
+    <%= "管理人モード！！！" if admin_signed_in? %>
+  </div>
+</div>

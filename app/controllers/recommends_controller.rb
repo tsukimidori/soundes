@@ -2,6 +2,8 @@ class RecommendsController < ApplicationController
   require 'itunes-search-api'
   def index
     @recommends = Recommend.all.order(created_at: :desc)
+    @recommender = current_recommender
+    @admins = Admin.find_by(email: @recommender.email) if recommender_signed_in?
   end
 
   def new

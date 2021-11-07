@@ -45,6 +45,6 @@ class RecommendsController < ApplicationController
 
   private
   def recommend_params
-    params.require(:recommends_music).permit(:title, :message, :url)
+    params.require(:recommends_music).permit(:title, :message, :recommender_id, :url)
   end
 end

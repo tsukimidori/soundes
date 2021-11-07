@@ -1,7 +1,7 @@
 class RecommendsMusic
 
   include ActiveModel::Model
-  attr_accessor :title, :message, :url
+  attr_accessor :title, :message, :recommender_id, :url
 
   with_options presence: true do
     validates :title
@@ -9,8 +9,8 @@ class RecommendsMusic
   end
 
   def save
+    recommend = Recommend.create(title: title, message: message, recommender_id: recommender_id)
     binding.pry
-    recommend = Recommend.create(title: title, message: message)
     music = Music.where(url: url).first_or_initialize
     music.save
 

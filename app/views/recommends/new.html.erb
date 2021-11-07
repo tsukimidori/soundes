@@ -26,21 +26,28 @@
           <div class="row">
             <div class="input-field col s12">
               <%= r.text_field :title, class: "materialize-textarea" %>
-              <%= r.label :search, "タイトルを入力してください" %>
+              <%= r.label :title, "タイトルを入力してください" %>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <%= r.text_field :message, class: "materialize-textarea" %>
-              <%= r.label :search, "メッセージがあれば入力してください" %>
+              <%= r.label :message, "メッセージがあれば入力してください" %>
             </div>
           </div>
           <div class="row">
-            <% if @searchs != nil %>
-              <% @searchs.each do |track| %>
-                <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/album/%E7%82%8E/<%= track['collectionId'] %>?i=<%= track['trackId'] %>"></iframe>
+            <div class="input-field col s12">
+              <% if @searchs != nil %>
+                <% @searchs.each do |track| %>
+                  <p>
+                    <label>
+                      <%= r.radio_button :url, "https://embed.music.apple.com/jp/album/%E7%82%8E/#{track['collectionId']}?i=#{track['trackId']}" %>
+                      <span style="width:100%;max-width:660px;"><iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:scroll;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/album/%E7%82%8E/<%= track['collectionId'] %>?i=<%= track['trackId'] %>"></iframe></span>
+                    </label>
+                  </p>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
           <div class="row">
             <div class="col s3">

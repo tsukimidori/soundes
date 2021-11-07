@@ -9,8 +9,10 @@ class RecommendsMusic
   end
 
   def save
-    recommend = Recommend.create(title: title)
-    music = Music.create(url: url)
+    binding.pry
+    recommend = Recommend.create(title: title, message: message)
+    music = Music.where(url: url).first_or_initialize
+    music.save
 
     RecommendMusicRelation.create(recommend_id: recommend.id, music_id: music.id)
   end

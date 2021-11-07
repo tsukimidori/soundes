@@ -23,7 +23,7 @@ class RecommendsController < ApplicationController
       @recommend.save
       return redirect_to root_path
     else
-      render "new"
+      render :new
     end
   end
 
@@ -43,6 +43,6 @@ class RecommendsController < ApplicationController
 
   private
   def recommend_params
-    params.require(:recommneds_music).permit(:title, :message, :url)
+    params.require(:recommends_music).permit(:title, :message, :url)
   end
 end

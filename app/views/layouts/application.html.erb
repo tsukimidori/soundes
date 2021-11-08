@@ -15,32 +15,8 @@
   </head>
 
   <body>
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large red">
-        <i class="large material-icons">menu</i>
-      </a>
-      <ul>
-        <li><a class="btn-floating green" href="<%= root_path %>"><i class="material-icons">home</i></a></li>
-        <% if recommender_signed_in? && !admin_signed_in? %>
-          <li><a class="btn-floating blue" href="<%= destroy_recommender_session_path %>"  data-method="delete"><i class="material-icons">logout</i></a></li>
-        <% elsif !recommender_signed_in?%>
-          <li><a class="btn-floating red" href="<%= new_recommender_registration_path %>"><i class="material-icons">person_add</i></a></li>
-          <li><a class="btn-floating yellow darken-1" href="<%= new_recommender_session_path %>"><i class="material-icons">login</i></a></li>
-        <% end %>
-        <% if recommender_signed_in? && @admins.present? %>
-          <li><a class="btn-floating yellow darken-1" href="<%= new_admin_registration_path %>"><i class="material-icons">person_add</i></a></li>
-        <% end %>
-        <% if admin_signed_in? %>
-          <li><a class="btn-floating blue" href="<%= destroy_admin_session_path %>"  data-method="delete"><i class="material-icons">logout</i></a></li>
-        <% elsif !admin_signed_in? && @admins.present? %>
-          <li><a class="btn-floating yellow darken-1" href="<%= new_admin_session_path %>"><i class="material-icons">login</i></a></li>
-        <% end %>
-      </ul>
-    </div>
     <%= yield %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>$(document).ready(function(){
-      $('.fixed-action-btn').floatingActionButton();}
-      );</script>
+    
   </body>
 </html>

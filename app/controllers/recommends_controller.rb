@@ -1,4 +1,6 @@
 class RecommendsController < ApplicationController
+  before_action :authenticate_recommender!, except: [:index]
+
   require 'itunes-search-api'
   def index
     @recommends = Recommend.all.order(created_at: :desc)

@@ -1,5 +1,4 @@
 <div class="container index">
-  
   <div class="row flex soundes">
     <h1 class="header"><%= link_to "♪", new_recommend_path, class: 'buruburu buruburu-hover shadow lime-text text-accent-2'%></h1>
     <br><br>
@@ -10,7 +9,6 @@
       <p>動画を再生できる環境ではありません</p>
     </video>
   </div>
-
   <div class="row col s4">
     <p class="recommender"><%= "#{@recommender.nickname}さんがログイン中" if recommender_signed_in? %></p>
     <p class="recommender"><%= "管理人モード！！！" if admin_signed_in? %></p>

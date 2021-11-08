@@ -1,10 +1,14 @@
 <div class="container index">
-  <div class="video-area">
-  <video id="video" src="/assets/nc217854.mp4" loop autoplay muted playsinline></video>
-  </div>
+  
   <div class="row flex soundes">
     <h1 class="header"><%= link_to "♪", new_recommend_path, class: 'buruburu buruburu-hover shadow lime-text text-accent-2'%></h1>
     <br><br>
+  </div>
+  <div class="video-area">
+    <video class="video materialboxed" loop autoplay muted playsinline webkit-playsinline>
+      <source src="/assets/nc217854.mp4" type="video/mp4">
+      <p>動画を再生できる環境ではありません</p>
+    </video>
   </div>
 
   <div class="row col s4">
@@ -13,3 +17,8 @@
   </div>
   <%= render partial: 'floating' %>
 </div>
+<script>
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+</script>

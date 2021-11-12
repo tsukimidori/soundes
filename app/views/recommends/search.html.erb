@@ -1,33 +1,32 @@
 <div class="container">
-  <div class="row center">
-    <%= link_to root_path do%>
-      <h1 class="header center">HelloWorld</h1>
-    <% end %>
-    <br><br>
-    
-    <div class="container">
-      <div class="row">
-        <%= form_with(url: search_recommends_path, local: true, method: :get, class: "col s12") do |f| %>
-          <div class="row">
-            <div class="input-field col s9">
-              <%= f.text_field :term, class: "materialize-textarea", id:"search" %>
-              <%= f.label :search, "曲名またはアーティストを入力してください" %>
-            </div>
-            <div class="col s3">
-              <button class="btn waves-effect waves-light"><%= f.submit "検索" %></button>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row ">
+  <%#<div class="row">
+  <%#  <%= form_with(url: search_recommends_path, method: :get, class: "col s12") do |f| %>
+  <%#    <div class="row">
+  <%#      <div class="input-field col s9">
+  <%#        <%= f.text_field :term, class: "materialize-textarea", id:"search" %>
+  <%#        <%= f.label :search, "曲名またはアーティストを入力してください" %>
+  <%#      </div>
+  <%#      <div class="col s3">
+  <%#        <button class="btn waves-effect waves-light"><%= f.submit "検索", id: "submit" %></button>
+  <%#      </div>
+  <%#    </div>
+  <%#  <% end %>
+  <%#</div>%>
+
+  <div class="row">
+    <%= form_with model: @recommend, url: recommends_path, local: true do |r| %>
+      <div class="input-field col s12">
         <% if @searchs != nil %>
           <% @searchs.each do |track| %>
-            <iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/album/%E7%82%8E/<%= track['collectionId'] %>?i=<%= track['trackId'] %>"></iframe>
+            <p>
+              <label>
+                <%= r.radio_button :url, "https://embed.music.apple.com/jp/album/%E7%82%8E/#{track['collectionId']}?i=#{track['trackId']}" %>
+                <span style="width:100%;max-width:660px;"><iframe allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:scroll;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/album/%E7%82%8E/<%= track['collectionId'] %>?i=<%= track['trackId'] %>"></iframe></span>
+              </label>
+            </p>
           <% end %>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

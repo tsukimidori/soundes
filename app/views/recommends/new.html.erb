@@ -15,14 +15,14 @@
     
     <div class="container">
       <div class="row">
-        <%= form_with(url: new_recommend_path, local: true, method: :get, class: "col s12") do |f| %>
+        <%= form_with(url: search_recommends_path, method: :get, class: "col s12") do |f| %>
           <div class="row">
             <div class="input-field col s9">
               <%= f.text_field :term, class: "materialize-textarea", id:"search" %>
               <%= f.label :search, "曲名またはアーティストを入力してください" %>
             </div>
             <div class="col s3">
-              <button class="btn waves-effect waves-light"><%= f.submit "検索" %></button>
+              <button class="btn waves-effect waves-light"><%= f.submit "検索", id: "submit" %></button>
             </div>
           </div>
         <% end %>
@@ -57,6 +57,8 @@
                 <% end %>
               <% end %>
             </div>
+          </div>
+          <div class="row result">
           </div>
           <div class="row">
             <div class="col s3">

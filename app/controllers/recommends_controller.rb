@@ -32,6 +32,7 @@ class RecommendsController < ApplicationController
   end
 
   def search
+    @recommends = Recommend.all.order(created_at: :desc)
     @searchs = ITunesSearchAPI.search(
       :term => params[:term],
       :country => 'jp',

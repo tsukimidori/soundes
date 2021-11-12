@@ -10,7 +10,7 @@
 ## ユーザー（recommender）
 *  メールアドレス：sample1@sample
 *  パスワード：sample1
-## 管理人（admin）
+## 管理人（admin）　※未実装
 *  メールアドレス：tsukimidori@sample
 *  パスワード：tsukimidori
 

@@ -10,7 +10,6 @@ class RecommendsMusic
 
   def save
     recommend = Recommend.create(title: title, message: message, recommender_id: recommender_id)
-    binding.pry
     music = Music.where(url: url).first_or_initialize
     music.save
 

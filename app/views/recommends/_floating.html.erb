@@ -7,8 +7,11 @@
     <% if recommender_signed_in? && !admin_signed_in? %>
       <li><a class="btn-floating blue" href="<%= destroy_recommender_session_path %>"  data-method="delete"><i class="material-icons">logout</i></a></li>
     <% elsif !recommender_signed_in?%>
-      <li><a class="btn-floating red" href="<%= new_recommender_registration_path %>"><i class="material-icons">person_add</i></a></li>
-      <li><a class="btn-floating yellow darken-1" href="<%= new_recommender_session_path %>"><i class="material-icons">login</i></a></li>
+      <li><a class="btn-floating red modal-trigger" href="<%= new_recommender_registration_path %>"><i class="material-icons">person_add</i></a></li>
+      <li><%= link_to new_recommender_session_path, class: "btn-floating yellow darken-1 modal-trigger" do%>
+      <i class="material-icons">login</i>
+      <% end %></li>
+      <li><a class="btn-floating yellow darken-1 modal-trigger" href="<%= new_recommender_session_path %>"><i class="material-icons">login</i></a></li>
     <% end %>
     <% if recommender_signed_in? && @admins.present? %>
       <li><a class="btn-floating yellow darken-1" href="<%= new_admin_registration_path %>"><i class="material-icons">person_add</i></a></li>

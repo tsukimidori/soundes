@@ -1,7 +1,7 @@
-<div class="container">
+<div class="modal-content">
   <h3 class="header center"> ログイン</h3>
   <br><br>
-  <%= form_with model: @recommender, url: recommender_session_path, id: 'recommender_session', class: 'recommender_session', local: true do |f| %>
+  <%= form_with model: @recommender, url: recommender_session_path, id: 'recommender_session', class: 'recommender_session' do |f| %>
     <div class="input-field row col s12">
       <%= f.label :email %>
       <%= f.email_field :email, autocomplete: "email" %>
@@ -13,8 +13,8 @@
       <span class="helper-text">・半角英数字6文字以上で入力してください</span>
     </div>
     <br>
-    <div class="row actions center-align col 4">
-      <button class="btn waves-effect waves-light"><%= f.submit "ログイン", style:"color: white;" %><i class="material-icons right">create</i></button>
+    <div class="row actions center-align col 4 modal-footer">
+      <button class="btn waves-effect waves-light modal-close"><%= f.submit "ログイン", style:"color: white;" %><i class="material-icons right">create</i></button>
     </div>
   <% end %>
   <%= render "recommenders/shared/links" %>
